@@ -18,13 +18,13 @@ app.use(express.json());
 
 // CORS config
 // const allowedOrigins = ['http://localhost:3000/'];
-const corsOptions = {
-  origin: process.env.CORS_ORIGIN || 'https://todos-fe.onrender.com/',
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
+// const corsOptions = {
+//   origin: process.env.CORS_ORIGIN || 'https://todos-fe.onrender.com/',
+//   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 //API Endpoints
 //Get all tasks
