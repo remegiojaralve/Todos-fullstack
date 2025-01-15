@@ -1,0 +1,352 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+@keyframes slideDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideOut {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+  50% {
+		opacity: 0.5;
+		transform: translateX(-100%);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(-200%);
+	}
+}
+
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body::after {
+  content: '';
+  width: 200%;
+  height: 200%;
+  position: fixed;
+  background: linear-gradient(to bottom right, #34023F, #34023F, #F74E94, #34023F, #34023F);
+  background-size: 400% 400%;
+  background-repeat: no-repeat;
+  animation: gradient 15s ease infinite;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+button { cursor: pointer; }
+
+.done { text-decoration: line-through; color: green; }
+
+.task {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  height: 100vh;
+  /* padding-top: 40px; */
+}
+
+form {
+  width: 100%;
+  text-align: center;
+}
+
+.task-heading {
+  color: #fff;
+  font-size: 3rem;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: bold;
+}
+
+.task-input {
+  width: 40%;
+  padding: 10px 15px;
+  font-size: 16px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+}
+
+.task-input::placeholder {
+  color: #fff;
+}
+
+.button {
+  padding: 10px 30px;
+  font-size: 16px;
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  margin-left: 5px;
+  transition: background-color 0.3s ease-out;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #00f7f7;
+  border-color: #00f7f7;
+  color: #000;
+}
+
+.button:disabled {
+  opacity: 0.5;
+}
+
+.task-list {
+  display: grid;
+  gap: 16px;
+  width: 48%;
+  position: relative;
+  overflow-y: scroll;
+  max-height: 524px;
+}
+
+.task-item {
+	width: 96%;
+	position: relative;
+	background-color: #fff;
+	color: #000;
+	padding: 15px;
+	font-size: 16px;
+	display: flex;
+	gap: 16px;
+	justify-content: space-between;
+	align-items: center;
+	font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+	transition: background 0.3s ease-out, transform 0.5s ease, opacity 0.3s ease;
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+.task-item.is-deleted {
+  animation: slideOut 0.5s ease-out forwards;
+}
+
+.task-item.is-done {
+  background: #34023F;
+  color: #fff;
+}
+
+.task-item-left, .task-item-right {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.task-item-right {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.task-item:hover .task-item-right{
+  opacity: 1;
+}
+
+.task-check, .task-edit, .task-delete {
+  width: 20px;
+  height: 20px;
+  border: none;
+  transition: all 0.3s ease-out;
+}
+
+.task-check {
+  background: url('./images/uncheck.png') no-repeat;
+  background-size: contain;
+}
+
+.task-edit {
+  background: url('./images/pencil.png') no-repeat;
+  background-size: contain;
+}
+
+.task-delete {
+  background: url('./images/bin.png') no-repeat;
+  background-size: contain;
+}
+
+.task-item.is-done .task-check {
+  background: url('./images/check.png') no-repeat;
+  background-size: contain;
+}
+
+.task-item.is-done .task-edit {
+  background: url('./images/pencil-blue.png') no-repeat;
+  background-size: contain;
+}
+
+.task-item.is-done .task-delete {
+  background: url('./images/bin-blue.png') no-repeat;
+  background-size: contain;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #282c34c6;
+  left: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay.is-active {
+  display: flex;
+}
+
+.overlay-content {
+  width: 40%;
+  background-color: #34023F;
+  min-height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.overlay-content input {
+  width: 30%;
+  border: none;
+  border-bottom: 2px solid #fff;
+  text-align: center;
+  background-color: transparent;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.loading-screen {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  color: #fff;
+  font-size: 10px;
+  left: 2.5em;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.loading, .loading::before, .loading::after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: dot 1.8s infinite ease-in-out;
+  animation: dot 1.8s infinite ease-in-out;
+}
+
+.loading::before, .loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+
+.loading::before {
+  left: -3.5em;
+  animation-delay: -.32s;
+}
+
+.loading::after {
+  left: 3.5em;
+  animation-delay: 0.2s;
+}
+
+@keyframes dot {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+
