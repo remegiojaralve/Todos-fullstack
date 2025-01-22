@@ -115,10 +115,18 @@ button { cursor: pointer; }
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  width: 100%;
   height: 100vh;
+  text-align: center;
   /* padding-top: 40px; */
 }
+
+@media screen and (max-width: 767px) {
+  .task {
+    padding: 0 30px;
+  }
+}
+
+
 
 form {
   width: 100%;
@@ -132,6 +140,12 @@ form {
   font-weight: bold;
 }
 
+@media screen and (max-width: 767px) {
+  .task-heading {
+    font-size: 2.5rem;
+  }
+}
+
 .task-input {
   width: 40%;
   padding: 10px 15px;
@@ -141,6 +155,12 @@ form {
   border: none;
   border-bottom: 2px solid #fff;
   outline: none;
+}
+
+@media screen and (max-width: 767px) {
+  .task-input {
+    width: 50%;
+  }
 }
 
 .task-input::placeholder {
@@ -177,8 +197,13 @@ form {
   max-height: 524px;
 }
 
+@media screen and (max-width: 767px) {
+  .task-list {
+    width: 100%;
+  }
+}
+
 .task-item {
-	width: 96%;
 	position: relative;
 	background-color: #fff;
 	color: #000;
@@ -191,6 +216,12 @@ form {
 	font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 	transition: background 0.3s ease-out, transform 0.5s ease, opacity 0.3s ease;
   animation: slideDown 0.5s ease-out forwards;
+}
+
+@media screen and (max-width: 767px) {
+  .task-item {
+	  gap: 0;
+  }
 }
 
 .task-item.is-deleted {
@@ -281,6 +312,14 @@ form {
   gap: 16px;
 }
 
+@media screen and (max-width: 767px) {
+  .overlay-content {
+    width: 90%;
+    gap: 26px;
+    min-height: 30%;
+  }
+}
+
 .overlay-content input {
   width: 30%;
   border: none;
@@ -290,6 +329,12 @@ form {
   outline: none;
   color: #fff;
   font-size: 16px;
+}
+
+@media screen and (max-width: 767px) {
+  .overlay-content input {
+    width: auto;
+  }
 }
 
 .loading-screen {
