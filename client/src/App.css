@@ -348,7 +348,7 @@ form {
 .loading {
   color: #fff;
   font-size: 10px;
-  left: 2.5em;
+  /* left: 2.5em; */
   position: relative;
   text-indent: -9999em;
   -webkit-transform: translateZ(0);
